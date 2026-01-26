@@ -6,9 +6,55 @@
       xmlns:local="clr-namespace:Pr14.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
+      Title="Главная">
 
-    <Grid>
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <TextBlock Text="Кинотеатр" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center">
+                <Button x:Name="btnLogin" Content="Вход / Регистрация" Margin="10,0" Padding="12,6" Click="btnLogin_Click"/>
+                <Button x:Name="btnProfile" Content="Личный кабинет" Margin="10,0" Padding="12,6" Click="btnProfile_Click" Visibility="Collapsed"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
+            <TextBox x:Name="tbSearch" Width="300" Margin="0,0,10,0" Padding="8" TextChanged="tbSearch_TextChanged" Text="Поиск по названию..."/>
+            <ComboBox x:Name="cmbSort" Width="220" Margin="0,0,10,0" SelectionChanged="cmbSort_SelectionChanged">
+                <ComboBoxItem Content="По названию (А-Я)" Tag="TitleAsc"/>
+                <ComboBoxItem Content="По названию (Я-А)" Tag="TitleDesc"/>
+                <ComboBoxItem Content="По рейтингу (↓)" Tag="RatingDesc" IsSelected="True"/>
+                <ComboBoxItem Content="По рейтингу (↑)" Tag="RatingAsc"/>
+            </ComboBox>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Movies}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#DDD" BorderThickness="1" Margin="10" Padding="10" Width="220" Background="#FAFAFA">
+                            <StackPanel>
+                                <Image Source="{Binding PosterPath}" Height="280" Stretch="UniformToFill" Margin="0,0,0,10"/>
+                                <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0:0.0}}" FontSize="14" Margin="0,5,0,0"/>
+                                <TextBlock Text="{Binding AgeRestriction}" FontSize="13" Foreground="Red" Margin="0,3,0,0"/>
+                                <TextBlock Text="{Binding ReleaseDate, StringFormat=С {0:dd.MM.yyyy}}" FontSize="13" Margin="0,3,0,0"/>
+                                <Button Content="Подробнее" Margin="0,10,0,0" Click="MovieDetails_Click"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Page>
