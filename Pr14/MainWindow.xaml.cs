@@ -20,9 +20,59 @@ namespace Pr14
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly List<Page> _pages;
+        private int _currentPageIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _pages = new List<Page>
+        {
+            new Pages.MainPage(),
+        };
+
+            NavigateToPage(0);
+        }
+
+        private void NavigateToPage(int index)
+        {
+            _currentPageIndex = index;
+            MainFrame.Navigate(_pages[index]);
+
+            UpdateButtons();
+            UpdateTitle();
+        }
+
+        private void UpdateButtons()
+        {
+            BackButton.IsEnabled = _currentPageIndex > 0;
+            ForwardButton.IsEnabled = _currentPageIndex < _pages.Count - 1;
+        }
+
+        private void UpdateTitle()
+        {
+            if (_pages[_currentPageIndex] is Page page)
+            {
+                TitleTextBlock.Text = page.Title;
+                Title = $"Кинотеатр – {page.Title}";
+            }
+        }
+        public void SetNextButtonEnabled(bool isEnabled)
+        {
+            ForwardButton.IsEnabled = isEnabled;
+        }
+
+        private void BackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_currentPageIndex > 0)
+                NavigateToPage(_currentPageIndex - 1);
+        }
+
+        private void ForwardButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_currentPageIndex < _pages.Count - 1)
+                NavigateToPage(_currentPageIndex + 1);
         }
     }
 }
