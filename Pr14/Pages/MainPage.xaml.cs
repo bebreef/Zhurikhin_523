@@ -55,6 +55,9 @@ namespace Pr14.Pages
 
         private void UpdateMovieList()
         {
+            if (allMovies == null)
+                return;
+
             var filtered = allMovies.AsQueryable();
 
             string search = tbSearch.Text.Trim().ToLower();
