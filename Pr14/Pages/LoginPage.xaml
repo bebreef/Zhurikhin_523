@@ -7,8 +7,45 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-    <Grid>
-        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,30">
+            <Button Content="← Назад" 
+                    Padding="12,6" 
+                    Click="Back_Click"/>
+            <TextBlock Text="Вход в аккаунт" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Margin="20,0,0,0" 
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" MaxWidth="400" VerticalAlignment="Center">
+            <TextBlock Text="Логин" Margin="0,0,0,5"/>
+            <TextBox x:Name="tbLogin" Padding="8" Margin="0,0,0,15"/>
+
+            <TextBlock Text="Пароль" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="tbPassword" Padding="8" Margin="0,0,0,20"/>
+
+            <Button Content="Войти" 
+                    Padding="12,8" 
+                    FontSize="14" 
+                    Click="btnLogin_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,30,0,0">
+            <TextBlock Text="Нет аккаунта?" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Button Content="Зарегистрироваться" 
+                    Padding="12,6" 
+                    Click="btnRegister_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
