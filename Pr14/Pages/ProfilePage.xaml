@@ -3,10 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Pr14.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProfilePage">
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="Личный кабинет"
+      Background="#0D0D0D">
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Margin="30">
             <Grid.RowDefinitions>
@@ -24,65 +25,100 @@
 
                 <Button Grid.Column="0" 
                         Content="← На главную" 
-                        Padding="16,8" 
-                        FontSize="14" 
+                        Padding="16,10" 
+                        FontSize="14"
+                        Foreground="White"
+                        Background="#B22222"  
+                        BorderBrush="#8B0000"
                         Click="Back_Click"
                         HorizontalAlignment="Left"/>
 
-                <TextBlock Grid.Column="1" 
+                    <TextBlock Grid.Column="1" 
                            Text="Личный кабинет" 
                            FontSize="28" 
                            FontWeight="Bold" 
+                           Foreground="White"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"/>
 
-                <Button Grid.Column="2" 
+                    <Button Grid.Column="2" 
                         Content="Выйти из аккаунта" 
-                        Padding="16,8" 
-                        Background="#E74C3C" 
-                        Foreground="White" 
+                        Padding="16,10" 
+                        FontSize="14"
+                        Foreground="White"
+                        Background="#B22222"
+                        BorderBrush="#8B0000"
                         Click="Logout_Click"
                         HorizontalAlignment="Right"/>
+                    
             </Grid>
 
             <Border Grid.Row="1" 
-                    BorderBrush="#E0E0E0" 
+                    BorderBrush="#333333" 
                     BorderThickness="1" 
                     CornerRadius="12" 
                     Padding="25" 
-                    Background="#F9FAFB"
+                    Background="#1A1A1A"
                     Margin="0,0,0,30">
                 <StackPanel>
                     <TextBlock Text="Информация об аккаунте" 
                                FontSize="20" 
                                FontWeight="SemiBold" 
+                               Foreground="White"
                                Margin="0,0,0,20"/>
 
-                    <Grid Margin="0,0,0,10">
+                    <Grid Margin="0,0,0,12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="140"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Логин:" FontWeight="Medium" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text="{Binding CurrentLogin}" FontSize="16" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" 
+                                   Text="Логин:" 
+                                   FontSize="16" 
+                                   Foreground="#CCCCCC" 
+                                   FontWeight="Medium" 
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" 
+                                   Text="{Binding CurrentLogin}" 
+                                   FontSize="16" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Margin="0,0,0,10">
+                    <Grid Margin="0,0,0,12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="140"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="ФИО:" FontWeight="Medium" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text="{Binding CurrentFullName}" FontSize="16" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" 
+                                   Text="ФИО:" 
+                                   FontSize="16" 
+                                   Foreground="#CCCCCC" 
+                                   FontWeight="Medium" 
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" 
+                                   Text="{Binding CurrentFullName}" 
+                                   FontSize="16" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
                     </Grid>
 
-                    <Grid Margin="0,0,0,10">
+                    <Grid Margin="0,0,0,12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="140"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Email:" FontWeight="Medium" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text="{Binding CurrentEmail}" FontSize="16" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" 
+                                   Text="Email:" 
+                                   FontSize="16" 
+                                   Foreground="#CCCCCC" 
+                                   FontWeight="Medium" 
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" 
+                                   Text="{Binding CurrentEmail}" 
+                                   FontSize="16" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
                     </Grid>
 
                     <Grid>
@@ -90,53 +126,76 @@
                             <ColumnDefinition Width="140"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Телефон:" FontWeight="Medium" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text="{Binding CurrentPhone}" FontSize="16" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" 
+                                   Text="Телефон:" 
+                                   FontSize="16" 
+                                   Foreground="#CCCCCC" 
+                                   FontWeight="Medium" 
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" 
+                                   Text="{Binding CurrentPhone}" 
+                                   FontSize="16" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
             </Border>
 
             <Border Grid.Row="2" 
-                    BorderBrush="#E0E0E0" 
+                    BorderBrush="#333333" 
                     BorderThickness="1" 
                     CornerRadius="12" 
                     Padding="25" 
-                    Background="#F9FAFB">
+                    Background="#1A1A1A">
                 <StackPanel>
                     <TextBlock Text="Ваши билеты" 
                                FontSize="20" 
                                FontWeight="SemiBold" 
+                               Foreground="White"
                                Margin="0,0,0,15"/>
 
                     <ListView x:Name="lvTickets" 
                               ItemsSource="{Binding Tickets}" 
+                              Background="Transparent"
                               BorderThickness="0">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Фильм" Width="250">
+                                <GridViewColumn Header="Фильм" Width="280">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding MovieTitle}" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding MovieTitle}" 
+                                                       TextWrapping="Wrap" 
+                                                       Foreground="White"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Сеанс" Width="180">
+                                <GridViewColumn Header="Сеанс" Width="160">
                                     <GridViewColumn.DisplayMemberBinding>
                                         <Binding Path="SessionDateTime" StringFormat="dd.MM.yyyy HH:mm"/>
                                     </GridViewColumn.DisplayMemberBinding>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Зал" Width="100" DisplayMemberBinding="{Binding HallName}"/>
-                                <GridViewColumn Header="Место" Width="80">
+                                <GridViewColumn Header="Зал" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Place}"/>
+                                            <TextBlock Text="{Binding HallName}" Foreground="White"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Место" Width="90">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Place}" Foreground="White"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Цена" Width="100">
-                                    <GridViewColumn.DisplayMemberBinding>
-                                        <Binding Path="Price" StringFormat="{}{0:N0} ₽"/>
-                                    </GridViewColumn.DisplayMemberBinding>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Price, StringFormat={}{0:N0} ₽}" 
+                                                       Foreground="#FF4444" 
+                                                       FontWeight="Bold"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Куплен" Width="140">
                                     <GridViewColumn.DisplayMemberBinding>
@@ -145,12 +204,19 @@
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
 
                     <TextBlock x:Name="tbNoTickets" 
                                Text="У вас пока нет билетов" 
                                FontStyle="Italic" 
-                               Foreground="Gray" 
+                               Foreground="#AAAAAA" 
                                Margin="0,10,0,0" 
                                Visibility="Collapsed"/>
                 </StackPanel>

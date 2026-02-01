@@ -4,10 +4,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pr14"
         mc:Ignorable="d"
-        Title="бест синема ин зе ворльд" Height="450" Width="800">
+        Title="бест синема ин зе ворльд" 
+        Height="750" Width="1100"
+        MinHeight="550" MinWidth="900"
+        Background="#0D0D0D"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="#0D0D0D"/>
     </Grid>
 </Window>
