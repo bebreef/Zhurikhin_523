@@ -24,5 +24,41 @@ namespace Pr14.Pages
         {
             InitializeComponent();
         }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.GoBack();  
+        }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbLogin.Text) || string.IsNullOrWhiteSpace(tbPassword.Password))
+            {
+                MessageBox.Show("Логин и пароль обязательны!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (Core.Context.Users.Any(u => u.Login == tbLogin.Text.Trim()))
+            {
+                MessageBox.Show("Такой логин уже занят!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var newUser = new Users
+            {
+                Login = tbLogin.Text.Trim(),
+                Password = tbPassword.Password,
+                FullName = tbFullName.Text.Trim(),
+                Email = tbEmail.Text.Trim(),
+                Phone = tbPhone.Text.Trim()
+            };
+
+            Core.Context.Users.Add(newUser);
+            Core.Context.SaveChanges();
+
+            MessageBox.Show("Регистрация успешна! Теперь можно войти.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            NavigationService?.Navigate(new LoginPage());
+        }
     }
 }
+    

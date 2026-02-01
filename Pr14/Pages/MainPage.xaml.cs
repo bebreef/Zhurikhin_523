@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Pr14.Pages.LoginPage;
 
 namespace Pr14.Pages
 {
@@ -120,9 +121,15 @@ namespace Pr14.Pages
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new ProfilePage());
+            if (CurrentUser.IsLoggedIn)
+            {
+                NavigationService?.Navigate(new ProfilePage());
+            }
+            else
+            {
+                NavigationService?.Navigate(new LoginPage());
+            }
         }
-
         public void ShowProfile()
         {
             btnLogin.Visibility = Visibility.Collapsed;

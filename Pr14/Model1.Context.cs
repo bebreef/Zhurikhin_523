@@ -31,5 +31,6 @@ namespace Pr14
         public virtual DbSet<Sessions> Sessions { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

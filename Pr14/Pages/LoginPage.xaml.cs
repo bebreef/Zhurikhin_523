@@ -51,6 +51,8 @@ namespace Pr14.Pages
                 CurrentUser.Id = user.Id;
                 CurrentUser.Login = user.Login;
                 CurrentUser.FullName = user.FullName;
+                CurrentUser.Email = user.Email;     
+                CurrentUser.Phone = user.Phone;      
 
                 if (NavigationService?.Content is MainPage main)
                     main.ShowProfile();
@@ -73,6 +75,8 @@ namespace Pr14.Pages
             public static int Id { get; set; }
             public static string Login { get; set; }
             public static string FullName { get; set; }
+            public static string Email { get; set; }    
+            public static string Phone { get; set; }      
 
             public static bool IsLoggedIn => Id > 0;
 
@@ -81,6 +85,8 @@ namespace Pr14.Pages
                 Id = 0;
                 Login = null;
                 FullName = null;
+                Email = null;
+                Phone = null;
             }
         }
     }

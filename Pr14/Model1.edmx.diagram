@@ -16,6 +16,7 @@
         <AssociationConnector Association="PR14Model.FK__Tickets__Session__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="PR14Model.FK__Tickets__UserId__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="PR14Model.MovieGenres" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PR14Model.sysdiagrams" Width="1.5" PointX="7.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

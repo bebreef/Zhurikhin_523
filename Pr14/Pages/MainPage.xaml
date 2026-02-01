@@ -17,9 +17,23 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
             <TextBlock Text="Кинотеатр" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center">
-                <Button x:Name="btnLogin" Content="Вход / Регистрация" Margin="10,0" Padding="12,6" Click="btnLogin_Click"/>
-                <Button x:Name="btnProfile" Content="Личный кабинет" Margin="10,0" Padding="12,6" Click="btnProfile_Click" Visibility="Collapsed"/>
+
+            <!-- Правый блок: вход + профиль -->
+            <StackPanel Orientation="Horizontal" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center" 
+                Margin="0,0,0,0">
+                <Button x:Name="btnLogin" 
+                Content="Вход / Регистрация" 
+                Margin="10,0" 
+                Padding="12,6" 
+                Click="btnLogin_Click"/>
+
+                <Button x:Name="btnProfile" 
+                Content="Профиль" 
+                Margin="10,0" 
+                Padding="12,6" 
+                Click="btnProfile_Click"/>
             </StackPanel>
         </StackPanel>
 
