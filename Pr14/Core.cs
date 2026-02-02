@@ -9,10 +9,5 @@ namespace Pr14
     public static class Core
     {
         public static PR14Entities Context = new PR14Entities();
-
-        public static void Add<T>(this PR14Entities ctx, T entity) where T : class
-        {
-            ctx.Set<T>().Add(entity);
-        }
     }
 }
