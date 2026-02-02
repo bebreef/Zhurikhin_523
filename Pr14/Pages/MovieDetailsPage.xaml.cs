@@ -45,6 +45,7 @@ namespace Pr14.Pages
             tbTitle.Text = movie.Title;
             tbRating.Text = movie.Rating.HasValue ? $"{movie.Rating:0.0}" : "Рейтинг отсутствует";
             tbAge.Text = movie.AgeRestriction ?? "Не указано";
+            tbGenres.Text = string.Join(", ", movie.MovieGenres.Select(mg => mg.Genres.Name));
             tbRelease.Text = movie.ReleaseDate.HasValue ? movie.ReleaseDate.Value.ToString("dd.MM.yyyy") : "Дата не указана";
             tbDescription.Text = movie.Description ?? "Описание отсутствует";
 

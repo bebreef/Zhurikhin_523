@@ -4,19 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="55d677d6fd1543f692b95d680feade65" Name="Diagram1">
-        <EntityTypeShape EntityType="PR14Model.Genres" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR14Model.Halls" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR14Model.Movies" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR14Model.Sessions" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR14Model.Tickets" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR14Model.Users" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+      <Diagram DiagramId="5d14c9e8b22c49a792bbecf43c75ec22" Name="Diagram1">
+        <EntityTypeShape EntityType="PR14Model.Genres" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.Halls" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.MovieGenres" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.Movies" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.Sessions" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.Tickets" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14Model.Users" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="PR14Model.FK_MovieGenres_Genres" ManuallyRouted="false" />
         <AssociationConnector Association="PR14Model.FK__Sessions__HallId__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14Model.FK_MovieGenres_Movies" ManuallyRouted="false" />
         <AssociationConnector Association="PR14Model.FK__Sessions__MovieI__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="PR14Model.FK__Tickets__Session__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="PR14Model.FK__Tickets__UserId__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="PR14Model.MovieGenres" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PR14Model.sysdiagrams" Width="1.5" PointX="7.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

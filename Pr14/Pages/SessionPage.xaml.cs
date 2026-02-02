@@ -68,7 +68,8 @@ namespace Pr14.Pages
                     Text = $"Ряд {row}",
                     Width = 60,
                     VerticalAlignment = VerticalAlignment.Center,
-                    FontWeight = FontWeights.Bold
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.White
                 };
                 rowPanel.Children.Add(rowLabel);
 
@@ -91,7 +92,8 @@ namespace Pr14.Pages
                     }
                     else
                     {
-                        btn.Background = Brushes.LightGreen;
+                        btn.Background = Brushes.DarkGreen;
+                        btn.Foreground = Brushes.White;
                         btn.Click += Seat_Click;
                     }
 
@@ -110,7 +112,7 @@ namespace Pr14.Pages
             if (_selectedSeats.Contains(btn))
             {
                 _selectedSeats.Remove(btn);
-                btn.Background = Brushes.LightGreen;
+                btn.Background = Brushes.DarkGreen;
             }
             else
             {
@@ -120,6 +122,20 @@ namespace Pr14.Pages
 
             tbSelectedCount.Text = _selectedSeats.Count.ToString();
             btnConfirm.IsEnabled = _selectedSeats.Count > 0;
+            btnReset.IsEnabled = _selectedSeats.Count > 0;
+        }
+
+        private void ResetSelection_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var btn in _selectedSeats)
+            {
+                btn.Background = Brushes.DarkGreen;
+            }
+
+            _selectedSeats.Clear();
+            tbSelectedCount.Text = "0";
+            btnConfirm.IsEnabled = false;
+            btnReset.IsEnabled = false;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

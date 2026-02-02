@@ -27,10 +27,11 @@ namespace Pr14
     
         public virtual DbSet<Genres> Genres { get; set; }
         public virtual DbSet<Halls> Halls { get; set; }
+        public virtual DbSet<MovieGenres> MovieGenres { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
         public virtual DbSet<Sessions> Sessions { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
