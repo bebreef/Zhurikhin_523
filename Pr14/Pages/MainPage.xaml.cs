@@ -17,15 +17,10 @@ using static Pr14.Pages.LoginPage;
 
 namespace Pr14.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
     public partial class MainPage : Page
     {
-        public ObservableCollection<MovieViewModel> Movies { get; set; }
-                    = new ObservableCollection<MovieViewModel>();
-
-        private List<Movies> allMovies; 
+        public ObservableCollection<MovieViewModel> Movies { get; set; } = new ObservableCollection<MovieViewModel>();
+        private List<Movies> allMovies;
 
         public MainPage()
         {
@@ -37,7 +32,6 @@ namespace Pr14.Pages
         private void LoadMovies()
         {
             allMovies = Core.Context.Movies.ToList();
-
             foreach (var m in allMovies)
             {
                 Movies.Add(new MovieViewModel
@@ -47,10 +41,9 @@ namespace Pr14.Pages
                     Rating = m.Rating,
                     AgeRestriction = m.AgeRestriction,
                     ReleaseDate = m.ReleaseDate,
-                    PosterPath = $"/Images/{m.Id}.png" 
+                    PosterPath = $"/Images/{m.Id}.png"
                 });
             }
-
             UpdateMovieList();
         }
 
@@ -74,10 +67,44 @@ namespace Pr14.Pages
 
                 switch (tag)
                 {
-                    case "TitleAsc": filtered = filtered.OrderBy(m => m.Title); break;
-                    case "TitleDesc": filtered = filtered.OrderByDescending(m => m.Title); break;
-                    case "RatingDesc": filtered = filtered.OrderByDescending(m => m.Rating ?? 0); break;
-                    case "RatingAsc": filtered = filtered.OrderBy(m => m.Rating ?? 0); break;
+                    case "TitleAsc":
+                        filtered = filtered.OrderBy(m => m.Title);
+                        break;
+
+                    case "TitleDesc":
+                        filtered = filtered.OrderByDescending(m => m.Title);
+                        break;
+
+                    case "RatingDesc":
+                        filtered = filtered.OrderByDescending(m => m.Rating ?? 0);
+                        break;
+
+                    case "RatingAsc":
+                        filtered = filtered.OrderBy(m => m.Rating ?? 0);
+                        break;
+
+                    case "ByGenre":
+                        var grouped = filtered.SelectMany(m => m.MovieGenres.DefaultIfEmpty(), (m, mg) => new { Movie = m, GenreName = mg != null ? mg.Genres.Name : "Без жанра" }).GroupBy(x => x.GenreName).OrderBy(g => g.Key == "Без жанра" ? 1 : 0) .ThenBy(g => g.Key);
+
+                        var groupedCollection = new ObservableCollection<IGrouping<string, MovieViewModel>>();
+
+                        foreach (var group in grouped)
+                        {
+                            var viewModels = group.Select(x => new MovieViewModel
+                            {
+                                Id = x.Movie.Id,
+                                Title = x.Movie.Title,
+                                Rating = x.Movie.Rating,
+                                AgeRestriction = x.Movie.AgeRestriction,
+                                ReleaseDate = x.Movie.ReleaseDate,
+                                PosterPath = $"/Images/{x.Movie.Id}.png"
+                            }).OrderBy(m => m.Title);
+
+                            groupedCollection.Add((IGrouping<string, MovieViewModel>)viewModels);
+                        }
+
+                        moviesControl.ItemsSource = groupedCollection;
+                        return; 
                 }
             }
 
@@ -94,6 +121,8 @@ namespace Pr14.Pages
                     PosterPath = $"/Images/{m.Id}.png"
                 });
             }
+
+            moviesControl.ItemsSource = Movies;
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -130,6 +159,7 @@ namespace Pr14.Pages
                 NavigationService?.Navigate(new LoginPage());
             }
         }
+
         public void ShowProfile()
         {
             btnLogin.Visibility = Visibility.Collapsed;

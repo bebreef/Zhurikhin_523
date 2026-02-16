@@ -14,11 +14,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Шапка -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,25">
-            <TextBlock Text="Кинотеатр «miauuu»" 
-                       FontSize="32" 
-                       FontWeight="Bold" 
-                       Foreground="White" 
+            <TextBlock Text="Кинотеатр «miauuu»"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="White"
                        VerticalAlignment="Center"/>
 
             <StackPanel Orientation="Horizontal"
@@ -47,21 +48,22 @@
             </StackPanel>
         </StackPanel>
 
+        <!-- Поиск + сортировка -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,25">
-            <TextBox x:Name="tbSearch" 
-                     Width="320" 
-                     Padding="10" 
+            <TextBox x:Name="tbSearch"
+                     Width="320"
+                     Padding="10"
                      FontSize="14"
                      Background="#1A1A1A"
                      Foreground="White"
                      BorderBrush="#444"
                      BorderThickness="1"
-                     TextChanged="tbSearch_TextChanged" 
+                     TextChanged="tbSearch_TextChanged"
                      Text="Поиск по названию..."/>
 
-            <ComboBox x:Name="cmbSort" 
-                      Width="240" 
-                      Margin="15,0,0,0" 
+            <ComboBox x:Name="cmbSort"
+                      Width="240"
+                      Margin="15,0,0,0"
                       Padding="10"
                       FontSize="14"
                       Foreground="White"
@@ -69,7 +71,6 @@
                       BorderBrush="#444"
                       BorderThickness="1"
                       SelectionChanged="cmbSort_SelectionChanged">
-
                 <ComboBox.Resources>
                     <Style TargetType="ComboBoxItem">
                         <Setter Property="Background" Value="#1A1A1A"/>
@@ -92,56 +93,74 @@
                 <ComboBoxItem Content="По названию (Я-А)" Tag="TitleDesc"/>
                 <ComboBoxItem Content="По рейтингу (↓)" Tag="RatingDesc" IsSelected="True"/>
                 <ComboBoxItem Content="По рейтингу (↑)" Tag="RatingAsc"/>
+                <ComboBoxItem Content="По жанрам" Tag="ByGenre"/>
             </ComboBox>
         </StackPanel>
 
+        <!-- Список фильмов с группировкой -->
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Movies}">
+            <ItemsControl x:Name="moviesControl" ItemsSource="{Binding Movies}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
+                        <StackPanel Orientation="Vertical"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
+
+                <!-- Группировка по жанрам (заголовки) -->
+                <ItemsControl.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" 
+                                           FontSize="22" 
+                                           FontWeight="Bold" 
+                                           Foreground="#FF4444" 
+                                           Margin="0,30,0,15"/>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ItemsControl.GroupStyle>
+
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="#333333" 
-                                BorderThickness="1" 
-                                Margin="12" 
-                                Padding="12" 
-                                Width="240" 
+                        <Border BorderBrush="#333333"
+                                BorderThickness="1"
+                                Margin="12"
+                                Padding="12"
+                                Width="240"
                                 Background="#1A1A1A"
                                 CornerRadius="8">
                             <StackPanel>
-                                <Image Source="{Binding PosterPath}" 
-                                       Height="320" 
-                                       Stretch="UniformToFill" 
+                                <Image Source="{Binding PosterPath}"
+                                       Height="320"
+                                       Stretch="UniformToFill"
                                        Margin="0,0,0,12"/>
 
-                                <TextBlock Text="{Binding Title}" 
-                                           FontSize="16" 
-                                           FontWeight="SemiBold" 
-                                           Foreground="White" 
-                                           TextWrapping="Wrap" 
+                                <TextBlock Text="{Binding Title}"
+                                           FontSize="16"
+                                           FontWeight="SemiBold"
+                                           Foreground="White"
+                                           TextWrapping="Wrap"
                                            TextAlignment="Center"
                                            Margin="0,0,0,6"/>
 
-                                <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0:0.0}}" 
-                                           FontSize="14" 
+                                <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0:0.0}}"
+                                           FontSize="14"
                                            Foreground="#FF4444"
                                            Margin="0,0,0,4"/>
 
-                                <TextBlock Text="{Binding AgeRestriction}" 
-                                           FontSize="13" 
+                                <TextBlock Text="{Binding AgeRestriction}"
+                                           FontSize="13"
                                            Foreground="#FF6666"
                                            Margin="0,0,0,4"/>
 
-                                <TextBlock Text="{Binding ReleaseDate, StringFormat=С {0:dd.MM.yyyy}}" 
-                                           FontSize="13" 
+                                <TextBlock Text="{Binding ReleaseDate, StringFormat=С {0:dd.MM.yyyy}}"
+                                           FontSize="13"
                                            Foreground="#AAAAAA"
                                            Margin="0,0,0,8"/>
 
-                                <Button Content="Подробнее" 
-                                        Padding="12,6" 
+                                <Button Content="Подробнее"
+                                        Padding="12,6"
                                         FontSize="13"
                                         Foreground="White"
                                         Background="#B22222"
