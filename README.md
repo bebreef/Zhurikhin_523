@@ -12,7 +12,7 @@
 
 | № | Функция | Скриншот формулы |
 |---|---------|------------------|
-| 1 | ф = \|cos x − cos y\| ^ (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4) | ![Формула ф](Zhurikhin_523/Images/formula_1.jpg)|
+| 1 | w = \|cos x − cos y\| ^ (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4) | ![Формула w](Zhurikhin_523/Images/formula_1.jpg)|
 | 2 | d = {(f(x) − y)³ + arctg(f(x)), x > y ; (y − f(x))³ + arctg(f(x)), y > x ; (y + f(x))³ + 0.5, x = y} <br> f(x) ∈ {sh(x), x², e^x} | ![Формула d](Zhurikhin_523/Images/formula_2.jpg) |
 | 3 | y = a x³ + cos²(x³ − b) | ![Формула y](Zhurikhin_523/Images/formula_3.jpg) |
 
@@ -25,7 +25,7 @@
 ### Страница 1
 - Ввод: x, y, z
 - Формула:  
-  ф = |cos x − cos y| ^ (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4)
+  w = |cos x − cos y| ^ (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4)
 - Вывод результата
 - Кнопки: Вычислить / Очистить
 - Отображение формулы (скриншот)
@@ -72,9 +72,9 @@ Zhurikhin_523/
 │ ├─ Page3.xaml               
 │ └─ Page3.xaml.cs
 ├─ Images/
-│ ├─ formula_1.png         
-│ ├─ formula_2.png         
-│ └─ formula_3.png       
+│ ├─ formula_1.jpg         
+│ ├─ formula_2.jpg         
+│ └─ formula_3.jpg       
 ├─ MainWindow.xaml
 ├─ MainWindow.xaml.cs
 └─ README.md
