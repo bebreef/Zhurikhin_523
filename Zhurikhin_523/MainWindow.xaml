@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zhurikhin_523"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Closing="Window_Closing"
+        Title="Лучший подсчёт функций" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Background="#F0F0F0">
+        <Menu Grid.Row="0">
             <MenuItem Header="Файл">
                 <MenuItem Header="Выход" Click="MenuExit_Click"/>
             </MenuItem>
@@ -23,13 +24,13 @@
 
         <TabControl Grid.Row="1" Margin="10" x:Name="tabMain">
             <TabItem Header="φ">
-                <Frame x:Name="framePhi" NavigationUIVisibility="Hidden" Source="/Pages/PagePhi.xaml"/>
+                <Frame x:Name="framePhi" NavigationUIVisibility="Hidden" Source="/Pages/Page1.xaml"/>
             </TabItem>
             <TabItem Header="j">
-                <Frame x:Name="frameJ" NavigationUIVisibility="Hidden" Source="/Pages/PageJ.xaml"/>
+                <Frame x:Name="frameJ" NavigationUIVisibility="Hidden" Source="/Pages/Page2.xaml"/>
             </TabItem>
             <TabItem Header="Таблица и график">
-                <Frame x:Name="frameTable" NavigationUIVisibility="Hidden" Source="/Pages/PageTableGraph.xaml"/>
+                <Frame x:Name="frameTable" NavigationUIVisibility="Hidden" Source="/Pages/Page3.xaml"/>
             </TabItem>
         </TabControl>
     </Grid>

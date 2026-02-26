@@ -7,8 +7,55 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page2">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto"
+                  Padding="10">
+        <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="/Images/formula_2.jpg" Height="110" Margin="0,0,0,10"
+               ToolTip="d = {(f(x)-y)³ + arctg(f(x))  если x>y ;  (y-f(x))³ + arctg(f(x))  если y>x ;  (y+f(x))³ + 0.5  если x=y }"/>
 
-    <Grid>
-        
+        <GroupBox Grid.Row="1" Header="Входные данные" Margin="0,0,0,10">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="x =" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbX" Grid.Row="0" Grid.Column="1" Margin="5" ToolTip="x"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="y =" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbY" Grid.Row="1" Grid.Column="1" Margin="5" ToolTip="y"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Выбор f(x)" Margin="0,0,0,15">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <RadioButton x:Name="rbSinh" Content="sh(x)" Margin="15,0" IsChecked="True" ToolTip="sinh(x)"/>
+                <RadioButton x:Name="rbX2"   Content="x²"     Margin="15,0" ToolTip="x*x"/>
+                <RadioButton x:Name="rbExp"  Content="e^x"    Margin="15,0" ToolTip="exp(x)"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="Результат">
+            <TextBox x:Name="tbResult" Margin="10" IsReadOnly="True" Background="#F8F8F8" ToolTip="Результат d"/>
+        </GroupBox>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
+            <Button Content="Вычислить" Width="140" Margin="10" Click="BtnCalc_Click" ToolTip="Выполнить расчёт"/>
+            <Button Content="Очистить"  Width="140" Margin="10" Click="BtnClear_Click" ToolTip="Очистить поля"/>
+        </StackPanel>
     </Grid>
+        </ScrollViewer>
 </Page>

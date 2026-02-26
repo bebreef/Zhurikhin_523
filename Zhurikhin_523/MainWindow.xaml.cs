@@ -25,17 +25,6 @@ namespace Zhurikhin_523
             InitializeComponent();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MessageBox.Show("Действительно выйти из программы?",
-                                "Подтверждение",
-                                MessageBoxButton.YesNo,
-                                MessageBoxImage.Question) == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-
         private void MenuExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -47,6 +36,20 @@ namespace Zhurikhin_523
                             "О программе",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Вы действительно хотите выйти из приложения?",
+                "Подтверждение выхода",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question,
+                MessageBoxResult.No);
+
+            if (result == MessageBoxResult.No)
+            {
+                e.Cancel = true; 
+            }
         }
     }
 }

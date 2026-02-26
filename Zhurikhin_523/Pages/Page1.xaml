@@ -7,8 +7,51 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto"
+                  Padding="10">
+        <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-    <Grid>
-        
+        <Image Grid.Row="0" Source="/Images/formula_1.jpg" Height="90" Margin="0,0,0,15"
+               ToolTip="w = |cos x − cos y| · (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4)"/>
+
+        <GroupBox Grid.Row="1" Header="Входные данные" Margin="0,0,0,15">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="x =" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbX" Grid.Row="0" Grid.Column="1" Margin="5" ToolTip="x"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="y =" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbY" Grid.Row="1" Grid.Column="1" Margin="5" ToolTip="y"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="z =" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbZ" Grid.Row="2" Grid.Column="1" Margin="5" ToolTip="z"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Результат">
+            <TextBox x:Name="tbResult" Margin="10" IsReadOnly="True" Background="#F8F8F8" ToolTip="Результат w"/>
+        </GroupBox>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
+            <Button Content="Вычислить" Width="140" Margin="10" Click="BtnCalc_Click" ToolTip="Выполнить расчёт"/>
+            <Button Content="Очистить" Width="140" Margin="10" Click="BtnClear_Click" ToolTip="Очистить поля"/>
+        </StackPanel>
     </Grid>
+        </ScrollViewer>
 </Page>
