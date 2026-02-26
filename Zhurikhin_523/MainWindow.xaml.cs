@@ -24,5 +24,29 @@ namespace Zhurikhin_523
         {
             InitializeComponent();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Действительно выйти из программы?",
+                                "Подтверждение",
+                                MessageBoxButton.YesNo,
+                                MessageBoxImage.Question) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void MenuExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Практическая работа №4\nВариант 4\nТестирование «белым ящиком»\n",
+                            "О программе",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+        }
     }
 }

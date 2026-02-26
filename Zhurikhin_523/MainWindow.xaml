@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Background="#F0F0F0">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход" Click="MenuExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Header="О программе" Click="MenuAbout_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <TabControl Grid.Row="1" Margin="10" x:Name="tabMain">
+            <TabItem Header="φ">
+                <Frame x:Name="framePhi" NavigationUIVisibility="Hidden" Source="/Pages/PagePhi.xaml"/>
+            </TabItem>
+            <TabItem Header="j">
+                <Frame x:Name="frameJ" NavigationUIVisibility="Hidden" Source="/Pages/PageJ.xaml"/>
+            </TabItem>
+            <TabItem Header="Таблица и график">
+                <Frame x:Name="frameTable" NavigationUIVisibility="Hidden" Source="/Pages/PageTableGraph.xaml"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
