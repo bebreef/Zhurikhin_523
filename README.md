@@ -12,7 +12,7 @@
 
 | № | Функция | Скриншот формулы |
 |---|---------|------------------|
-| 1 | ф = |cos x − cos y| ^ (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4) | ![Формула ф](Zhurikhin_523/Images/formula_1.jpg) |
+| 1 | f = |cos x − cos y| ^ (1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4) | ![Формула f](Zhurikhin_523/Images/formula_1.jpg) |
 | 2 | d = {(f(x) − y)³ + arctg(f(x)), x > y ; (y − f(x))³ + arctg(f(x)), y > x ; (y + f(x))³ + 0.5, x = y} <br> f(x) ∈ {sh(x), x², e^x} | ![Формула d](Zhurikhin_523/Images/formula_2.jpg) |
 | 3 | y = a x³ + cos²(x³ − b) | ![Формула y](Zhurikhin_523/Images/formula_3.jpg) |
 
