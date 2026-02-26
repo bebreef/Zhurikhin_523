@@ -56,7 +56,7 @@
 
 ---
 ## Технологии
-- **WPF (.NET Framework 4.8)** — пользовательский интерфейс
+- **WPF (.NET Framework)** — пользовательский интерфейс
 - **System.Windows.Forms.DataVisualization.Charting** — построение графика (WindowsFormsHost)
 - **Git** — система контроля версий
 - **Markdown** — оформление документации (README.md)
