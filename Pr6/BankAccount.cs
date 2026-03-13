@@ -8,6 +8,8 @@ namespace BankAccountNS
     /// </summary>
     public class BankAccount
     {
+        public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
+        public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
         private readonly string m_customerName;
         private double m_balance;
        
@@ -99,5 +101,6 @@ namespace BankAccountNS
             Console.WriteLine("Current balance is ${0}", ba.Balance);
             Console.ReadLine();
         }
+
     }
 }
