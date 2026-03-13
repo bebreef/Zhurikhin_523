@@ -6,6 +6,9 @@ namespace BankTests
     [TestClass]
     public class BankAccountTests
     {
+        public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
+        public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
+
         [TestMethod]
         public void Debit_WithValidAmount_UpdatesBalance()
         {
