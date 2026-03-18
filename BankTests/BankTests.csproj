@@ -61,6 +61,18 @@
       <Name>Bank</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\AllFail.png" />
+    <Content Include="Images\AllPass.png" />
+    <Content Include="Images\Credit_WhenAmountIsNegative_ShouldThrowArgumentOutOfRangeExceptionPass.png" />
+    <Content Include="Images\Credit_WithValidPositiveAmount_IncreasesBalancePass.png" />
+    <Content Include="Images\Credit_WithZeroAmount_BalanceShouldNotChangePass.png" />
+    <Content Include="Images\Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRangePass.png" />
+    <Content Include="Images\Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRangePass.png" />
+    <Content Include="Images\Debit_WithValidAmount_UpdatesBalanceFail.png" />
+    <Content Include="Images\Debit_WithValidAmount_UpdatesBalancePass.png" />
+    <Content Include="Images\FinalDebit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRangePass.png" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
