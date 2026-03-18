@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BankAccountNS;
+using System;
 
 namespace BankTests
 {
@@ -49,14 +50,45 @@ namespace BankTests
         {
             double beginningBalance = 11.99;
             double creditAmount = 5.77;
-            double expected = 17.76;   
+            double expected = 17.76;
 
             BankAccount account = new BankAccount("Mr. Roman Abramovich", beginningBalance);
 
             account.Credit(creditAmount);
 
-            double actual = account.Balance;
-            Assert.AreEqual(expected, actual, 0.001, "Баланс не был корректно увеличен после пополнения");
+            Assert.AreEqual(expected, account.Balance, 0.001, "Баланс должен увеличиться после внесения положительной суммы");
+        }
+
+        [TestMethod]
+        public void Credit_WhenAmountIsNegative_ShouldThrowArgumentOutOfRangeException()
+        {
+
+            double beginningBalance = 11.99;
+            double creditAmount = -5.00;
+            BankAccount account = new BankAccount("Test User", beginningBalance);
+
+            try
+            {
+                account.Credit(creditAmount);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                return;
+            }
+
+            Assert.Fail("Ожидалось исключение ArgumentOutOfRangeException при отрицательной сумме пополнения");
+        }
+
+        [TestMethod]
+        public void Credit_WithZeroAmount_BalanceShouldNotChange()
+        {
+            double beginningBalance = 100.00;
+            double creditAmount = 0.0;
+            BankAccount account = new BankAccount("Zero Test", beginningBalance);
+
+            account.Credit(creditAmount);
+
+            Assert.AreEqual(beginningBalance, account.Balance, 0.001, "Баланс не должен измениться при пополнении на 0");
         }
     }
 }
