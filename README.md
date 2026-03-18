@@ -55,7 +55,7 @@ Zhurikhin_523/
 ## Скриншоты результатов
 
 **Успешное прохождение всех тестов**  
-![Все тесты пройдены](Zhurikhin_523/Pr6/BankTests/Images/AllFail.png)  
+![Все тесты пройдены](BankTests/Images/AllPass.png)  
 *Обозреватель тестов — 5/5 зелёных*
 
 **Намеренное внесение ошибки → все тесты провалены**  
@@ -65,28 +65,28 @@ Zhurikhin_523/
 **Успешное выполнение отдельных тестов**
 
 - Debit — корректное списание  
-![Debit_WithValidAmount_UpdatesBalance — Pass](Zhurikhin_523/BankTests/Images/Debit_WithValidAmount_UpdatesBalancePass.png)
+![Debit_WithValidAmount_UpdatesBalance — Pass](BankTests/Images/Debit_WithValidAmount_UpdatesBalancePass.png)
 
 - Debit — попытка снять больше баланса  
-![Debit_WhenAmountIsMoreThanBalance — Pass](Zhurikhin_523/BankTests/Images/Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRangePass.png)
+![Debit_WhenAmountIsMoreThanBalance — Pass](BankTests/Images/Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRangePass.png)
 
 - Debit — финальная версия теста на превышение баланса  
-![FinalDebit_WhenAmountIsMoreThanBalance — Pass](Zhurikhin_523/BankTests/Images/FinalDebit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRangePass.png)
+![FinalDebit_WhenAmountIsMoreThanBalance — Pass](BankTests/Images/FinalDebit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRangePass.png)
 
 - Debit — попытка снять отрицательную сумму  
-![Debit_WhenAmountIsLessThanZero — Pass](Zhurikhin_523/BankTests/Images/Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRangePass.png)
+![Debit_WhenAmountIsLessThanZero — Pass](BankTests/Images/Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRangePass.png)
 
 - Credit — корректное пополнение  
-![Credit_WithValidPositiveAmount — Pass](Zhurikhin_523/BankTests/Images/Credit_WithValidPositiveAmount_IncreasesBalancePass.png)
+![Credit_WithValidPositiveAmount — Pass](BankTests/Images/Credit_WithValidPositiveAmount_IncreasesBalancePass.png)
 
 - Credit — отрицательная сумма  
-![Credit_WhenAmountIsNegative — Pass](Zhurikhin_523/BankTests/Images/Credit_WhenAmountIsNegative_ShouldThrowArgumentOutOfRangeExceptionPass.png)
+![Credit_WhenAmountIsNegative — Pass](BankTests/Images/Credit_WhenAmountIsNegative_ShouldThrowArgumentOutOfRangeExceptionPass.png)
 
 - Credit — пополнение на 0  
-![Credit_WithZeroAmount — Pass](Zhurikhin_523/BankTests/Images/Credit_WithZeroAmount_BalanceShouldNotChangePass.png)
+![Credit_WithZeroAmount — Pass](BankTests/Images/Credit_WithZeroAmount_BalanceShouldNotChangePass.png)
 
 **Пример провала теста (Debit — некорректное списание)**  
-![Debit_WithValidAmount — Fail](Zhurikhin_523/BankTests/Images/Debit_WithValidAmount_UpdatesBalanceFail.png)
+![Debit_WithValidAmount — Fail](BankTests/Images/Debit_WithValidAmount_UpdatesBalanceFail.png)
 
 ---
 ## Выводы по работе
