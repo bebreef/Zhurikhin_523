@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
-using Zhurikhin_523.Zhurikhin_523;
+using Zhurikhin_523;
 
 namespace Zhurikhin_523.Pages
 {

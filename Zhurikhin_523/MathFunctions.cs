@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Zhurikhin_523
-{
-    namespace Zhurikhin_523
-    {
+{ 
         /// <summary>
         /// Содержит математические функции из ПР №4 для вычисления значений w, d и y(x)
         /// </summary>
@@ -88,6 +86,5 @@ namespace Zhurikhin_523
                 double cosTerm = Math.Cos(x3 - b);
                 return a * x3 + cosTerm * cosTerm;
             }
-        }
-    }
+   }
 }

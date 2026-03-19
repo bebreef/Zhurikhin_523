@@ -56,6 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Zhurikhin_523\Zhurikhin_523.csproj">
       <Project>{9516324d-6b15-4410-aa21-7ce0fe692b05}</Project>
       <Name>Zhurikhin_523</Name>
