@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
+using Zhurikhin_523.Zhurikhin_523;
 
 namespace Zhurikhin_523.Pages
 {
@@ -41,6 +42,12 @@ namespace Zhurikhin_523.Pages
             chart.Legends["legendMain"].Enabled = true;
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки "Вычислить и построить" на вкладке с таблицей и графиком
+        /// Считывает параметры a, b, x₀, xₖ, dx, строит таблицу и график функции y(x)
+        /// </summary>
+        /// <param name="sender">Источник события (кнопка)</param>
+        /// <param name="e">Аргументы события</param>
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
             if (!double.TryParse(tbA.Text, out double a) ||
@@ -59,38 +66,64 @@ namespace Zhurikhin_523.Pages
                 return;
             }
 
-            tbTable.Clear();
-            var sb = new StringBuilder();
-
-            double x = x0;
-            int stepCount = 0;
-            const int MAX_STEPS = 5000;
-
-            var series = chart.Series["y(x)"];
-            series.Points.Clear();
-
-            while ((dx > 0 && x <= xk + 1e-9) || (dx < 0 && x >= xk - 1e-9))
+            if (CalculateAndPlot(a, b, x0, xk, dx))
             {
-                if (stepCount++ > MAX_STEPS)
+                MessageBox.Show("Расчёт и построение графика завершены.", "Успех");
+            }
+            else
+            {
+                MessageBox.Show("Ошибка при построении таблицы и графика.", "Ошибка");
+            }
+        }
+
+        /// <summary>
+        /// Выполняет расчёт значений функции y(x) = a·x³ + cos²(x³ − b) на интервале [x₀, xₖ] с шагом dx,
+        /// заполняет текстовую таблицу и строит график
+        /// </summary>
+        /// <param name="a">Коэффициент a</param>
+        /// <param name="b">Сдвиг b</param>
+        /// <param name="x0">Начало интервала</param>
+        /// <param name="xk">Конец интервала</param>
+        /// <param name="dx">Шаг изменения x</param>
+        /// <returns>true — если расчёт и построение выполнены успешно, false — при ошибке</returns>
+        private bool CalculateAndPlot(double a, double b, double x0, double xk, double dx)
+        {
+            try
+            {
+                tbTable.Clear();
+                var sb = new StringBuilder();
+                double x = x0;
+                int stepCount = 0;
+                const int MAX_STEPS = 5000;
+
+                var series = chart.Series["y(x)"];
+                series.Points.Clear();
+
+                while ((dx > 0 && x <= xk + 1e-9) || (dx < 0 && x >= xk - 1e-9))
                 {
-                    MessageBox.Show("Слишком много точек (> 5000). Увеличьте шаг dx.", "Предупреждение");
-                    break;
+                    if (stepCount++ > MAX_STEPS)
+                    {
+                        MessageBox.Show("Слишком много точек (> 5000). Увеличьте шаг dx.", "Предупреждение");
+                        return false;
+                    }
+
+                    double y = MathFunctions.CalculateY(x, a, b);
+
+                    sb.AppendLine($"x = {x,12:F6} y = {y,14:G8}");
+                    series.Points.AddXY(x, y);
+
+                    x += dx;
                 }
 
-                double x3 = x * x * x;
-                double cosTerm = Math.Cos(x3 - b);
-                double y = a * x3 + cosTerm * cosTerm;
+                tbTable.Text = sb.ToString();
+                chart.ChartAreas["mainArea"].RecalculateAxesScale();
 
-                sb.AppendLine($"x = {x,12:F6}   y = {y,14:G8}");
-
-                series.Points.AddXY(x, y);
-
-                x += dx;
+                return true;
             }
-
-            tbTable.Text = sb.ToString();
-
-            chart.ChartAreas["mainArea"].RecalculateAxesScale();
+            catch
+            {
+                return false;
+            }
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)

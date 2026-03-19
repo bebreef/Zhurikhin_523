@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zhurikhin_523.Zhurikhin_523;
 
 namespace Zhurikhin_523.Pages
 {
@@ -25,6 +26,12 @@ namespace Zhurikhin_523.Pages
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки "Вычислить"
+        /// Считывает значения x, y, z из текстовых полей, вызывает расчёт и выводит результат
+        /// </summary>
+        /// <param name="sender">Источник события (кнопка)</param>
+        /// <param name="e">Аргументы события</param>
         private void BtnCalc_Click(object sender, RoutedEventArgs e)
         {
             if (!double.TryParse(tbX.Text, out double x) ||
@@ -35,24 +42,37 @@ namespace Zhurikhin_523.Pages
                 return;
             }
 
+            if (CalculateW(x, y, z, out double result))
+            {
+                tbResult.Text = result.ToString("G8");
+            }
+            else
+            {
+                MessageBox.Show("Ошибка при вычислении функции w.", "Ошибка");
+            }
+        }
+
+        /// <summary>
+        /// Выполняет расчёт значения функции w = |cos x − cos y|^(1 + 2 sin² y) · (1 + z + z²/2 + z³/3 + z⁴/4)
+        /// </summary>
+        /// <param name="x">Значение параметра x (в радианах)</param>
+        /// <param name="y">Значение параметра y (в радианах)</param>
+        /// <param name="z">Значение параметра z</param>
+        /// <param name="result">Вычисленное значение функции w (при успехе)</param>
+        /// <returns>true — если расчёт выполнен успешно, false — при ошибке</returns>
+        private bool CalculateW(double x, double y, double z, out double result)
+        {
+            result = 0;
+
             try
             {
-                double cosX = Math.Cos(x);
-                double cosY = Math.Cos(y);
-                double sinY = Math.Sin(y);
-
-                double exponent = 1 + 2 * Math.Pow(sinY, 2);
-
-                double polyZ = 1 + z + Math.Pow(z, 2) / 2 + Math.Pow(z, 3) / 3 + Math.Pow(z, 4) / 4;
-
-                double baseVal = Math.Abs(cosX - cosY);
-                double w = Math.Pow(baseVal, exponent) * polyZ;
-
-                tbResult.Text = w.ToString("G8");
+                double w = MathFunctions.CalculateW(x, y, z);
+                result = w;
+                return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Ошибка");
+                return false;
             }
         }
 
