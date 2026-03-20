@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhurikhin_523", "Zhurikhin_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pr14", "..\bebreef\ISIP523_Zhurikhin\Pr14\Pr14.csproj", "{1C3480EC-9414-4FA9-B4A7-9AD81F31180D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{6113E875-6B8E-4923-A85D-7C46063D4662}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1C3480EC-9414-4FA9-B4A7-9AD81F31180D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C3480EC-9414-4FA9-B4A7-9AD81F31180D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C3480EC-9414-4FA9-B4A7-9AD81F31180D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6113E875-6B8E-4923-A85D-7C46063D4662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6113E875-6B8E-4923-A85D-7C46063D4662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6113E875-6B8E-4923-A85D-7C46063D4662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6113E875-6B8E-4923-A85D-7C46063D4662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
