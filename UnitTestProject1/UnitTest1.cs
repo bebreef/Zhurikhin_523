@@ -26,6 +26,21 @@ namespace UnitTestProject1
             Assert.IsTrue(loginPage.Auth("a", "a"));
 
         }
+        [TestMethod]
+        public void AuthTestFail()
+        {
+            var page = new LoginPage();
 
+            Assert.IsFalse(page.Auth("", "any"));
+
+            Assert.IsFalse(page.Auth("admin", ""));
+
+            Assert.IsFalse(page.Auth("nonexistentuser", "12345"));
+
+            Assert.IsFalse(page.Auth("admin", "wrong1"));
+            Assert.IsFalse(page.Auth("admin", "wrong2"));
+            Assert.IsFalse(page.Auth("admin", "wrong3")); 
+            Assert.IsFalse(page.Auth("admin", "admin123")); // тест для капчи, заранее
+        }
     }
 }
