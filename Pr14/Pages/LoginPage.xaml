@@ -15,81 +15,48 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,40">
-            <Button Content="← Назад"
-                    Padding="16,10"
-                    FontSize="14"
-                    Foreground="White"
-                    Background="#B22222"
-                    BorderBrush="#8B0000"
+            <Button Content="← Назад" Padding="16,10" FontSize="14"
+                    Foreground="White" Background="#B22222" BorderBrush="#8B0000"
                     Click="Back_Click"/>
-
-            <TextBlock Text="Вход в аккаунт"
-                       FontSize="28"
-                       FontWeight="Bold"
-                       Foreground="White"
-                       Margin="25,0,0,0"
-                       VerticalAlignment="Center"/>
+            <TextBlock Text="Вход в аккаунт" FontSize="28" FontWeight="Bold"
+                       Foreground="White" Margin="25,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
 
-        <Border Grid.Row="1" 
-                MaxWidth="420" 
-                VerticalAlignment="Center"
-                BorderBrush="#333333"
-                BorderThickness="1"
-                CornerRadius="12"
-                Padding="30"
-                Background="#1A1A1A">
+        <Border Grid.Row="1" MaxWidth="420" VerticalAlignment="Center"
+                BorderBrush="#333333" BorderThickness="1" CornerRadius="12"
+                Padding="30" Background="#1A1A1A">
             <StackPanel>
-                <TextBlock Text="Логин" 
-                           Foreground="#CCCCCC" 
-                           FontSize="14" 
-                           Margin="0,0,0,6"/>
-
-                <TextBox x:Name="tbLogin" 
-                         Padding="12" 
-                         FontSize="16"
-                         Background="#222222"
-                         Foreground="White"
-                         BorderBrush="#444444"
+                <TextBlock Text="Логин" Foreground="#CCCCCC" FontSize="14" Margin="0,0,0,6"/>
+                <TextBox x:Name="tbLogin" Padding="12" FontSize="16"
+                         Background="#222222" Foreground="White" BorderBrush="#444444"
                          Margin="0,0,0,18"/>
 
-                <TextBlock Text="Пароль" 
-                           Foreground="#CCCCCC" 
-                           FontSize="14" 
-                           Margin="0,0,0,6"/>
-
-                <PasswordBox x:Name="tbPassword" 
-                             Padding="12" 
-                             FontSize="16"
-                             Background="#222222"
-                             Foreground="White"
-                             BorderBrush="#444444"
+                <TextBlock Text="Пароль" Foreground="#CCCCCC" FontSize="14" Margin="0,0,0,6"/>
+                <PasswordBox x:Name="tbPassword" Padding="12" FontSize="16"
+                             Background="#222222" Foreground="White" BorderBrush="#444444"
                              Margin="0,0,0,25"/>
 
-                <Button Content="Войти"
-                        Padding="16,10"
-                        FontSize="16"
-                        Foreground="White"
-                        Background="#B22222"
-                        BorderBrush="#8B0000"
+                <!-- Простая текстовая CAPTCHA -->
+                <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed" Margin="0,10,0,20">
+                    <TextBlock Text="Введите код с картинки:" 
+                               Foreground="#CCCCCC" FontSize="14" Margin="0,0,0,8"/>
+                    <TextBlock x:Name="tbCaptchaText" 
+                               FontSize="24" FontWeight="Bold" Foreground="#FF4444"
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBox x:Name="tbCaptcha" Padding="12" FontSize="16"
+                             Background="#222222" Foreground="White" BorderBrush="#444444"/>
+                </StackPanel>
+
+                <Button Content="Войти" Padding="16,10" FontSize="16"
+                        Foreground="White" Background="#B22222" BorderBrush="#8B0000"
                         Click="btnLogin_Click"/>
             </StackPanel>
         </Border>
 
-        <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    Margin="0,40,0,0">
-            <TextBlock Text="Нет аккаунта?" 
-                       Foreground="#AAAAAA" 
-                       VerticalAlignment="Center" 
-                       Margin="0,0,12,0"/>
-            <Button Content="Зарегистрироваться"
-                    Padding="16,10"
-                    FontSize="14"
-                    Foreground="White"
-                    Background="#B22222"
-                    BorderBrush="#8B0000"
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,40,0,0">
+            <TextBlock Text="Нет аккаунта?" Foreground="#AAAAAA" VerticalAlignment="Center" Margin="0,0,12,0"/>
+            <Button Content="Зарегистрироваться" Padding="16,10" FontSize="14"
+                    Foreground="White" Background="#B22222" BorderBrush="#8B0000"
                     Click="btnRegister_Click"/>
         </StackPanel>
     </Grid>
