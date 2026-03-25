@@ -43,7 +43,7 @@ namespace Pr14.Pages
 
             if (user != null)
             {
-                _failedAttempts = 0;
+                _failedAttempts = 0;            
                 CaptchaPanel.Visibility = Visibility.Collapsed;
 
                 if (showMessages)
@@ -89,6 +89,10 @@ namespace Pr14.Pages
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+        public string GetCurrentCaptcha()
+        {
+            return _currentCaptcha;
+        }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +108,12 @@ namespace Pr14.Pages
         {
             NavigationService?.Navigate(new RegisterPage());
         }
+        public void ResetFailedAttempts()
+        {
+            _failedAttempts = 0;
+            CaptchaPanel.Visibility = Visibility.Collapsed;
+        }
+
         public static class CurrentUser
         {
             public static int Id { get; set; }
