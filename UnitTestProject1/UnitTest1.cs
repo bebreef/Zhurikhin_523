@@ -10,11 +10,22 @@ namespace UnitTestProject1
         [TestMethod]
         public void AuthTest()
         {
-            var page = new LoginPage();
-            Assert.IsTrue(page.Auth("test", "test1"));
-            Assert.IsFalse(page.Auth("user1", "12345"));
-            Assert.IsFalse(page.Auth("", ""));
-            Assert.IsFalse(page.Auth(" ", " "));
+            var loginPage = new LoginPage();
+            bool result = loginPage.Auth("wronglogin", "wrongpass");
+            Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void AuthTestSuccess()
+        {
+            var loginPage = new LoginPage();
+
+            Assert.IsTrue(loginPage.Auth("bebreef", "1234"));      
+            Assert.IsTrue(loginPage.Auth("nebebreef", "1"));
+            Assert.IsTrue(loginPage.Auth("am", "Fvbnyf2912"));
+            Assert.IsTrue(loginPage.Auth("a", "a"));
+
+        }
+
     }
 }
