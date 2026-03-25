@@ -14,15 +14,15 @@ namespace Pr14.Pages
         {
             InitializeComponent();
         }
-
-        public bool Auth(string login, string password, string captchaInput = "")
+        public bool Auth(string login, string password, string captchaInput = "", bool showMessages = true)
         {
             login = login?.Trim() ?? "";
             password = password?.Trim() ?? "";
 
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Введите логин и пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (showMessages)
+                    MessageBox.Show("Введите логин и пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
@@ -31,7 +31,8 @@ namespace Pr14.Pages
                 if (string.IsNullOrWhiteSpace(captchaInput) ||
                     captchaInput.Trim().ToUpper() != _currentCaptcha.ToUpper())
                 {
-                    MessageBox.Show("Введите правильный код!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    if (showMessages)
+                        MessageBox.Show("Введите правильный код!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     GenerateCaptcha();
                     CaptchaPanel.Visibility = Visibility.Visible;
                     return false;
@@ -45,7 +46,8 @@ namespace Pr14.Pages
                 _failedAttempts = 0;
                 CaptchaPanel.Visibility = Visibility.Collapsed;
 
-                MessageBox.Show($"Добро пожаловать, {user.FullName ?? user.Login}!", "Успех");
+                if (showMessages)
+                    MessageBox.Show($"Добро пожаловать, {user.FullName ?? user.Login}!", "Успех");
 
                 CurrentUser.Id = user.Id;
                 CurrentUser.Login = user.Login;
@@ -62,7 +64,8 @@ namespace Pr14.Pages
             else
             {
                 _failedAttempts++;
-                MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (showMessages)
+                    MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 if (_failedAttempts >= 3)
                 {
@@ -75,7 +78,7 @@ namespace Pr14.Pages
 
         private void GenerateCaptcha()
         {
-            _currentCaptcha = GenerateRandomCode(6);        
+            _currentCaptcha = GenerateRandomCode(6);
             tbCaptchaText.Text = _currentCaptcha;
         }
 
@@ -89,7 +92,7 @@ namespace Pr14.Pages
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Auth(tbLogin.Text, tbPassword.Password, tbCaptcha.Text);
+            Auth(tbLogin.Text, tbPassword.Password, tbCaptcha.Text, showMessages: true);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
