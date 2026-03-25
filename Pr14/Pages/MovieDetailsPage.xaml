@@ -1,0 +1,181 @@
+﻿<Page x:Class="Pr14.Pages.MovieDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Background="#0D0D0D"
+      Title="MovieDetailsPage">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,30">
+                <Button Content="← Назад" 
+                        Padding="16,10" 
+                        FontSize="14"
+                        Foreground="White"
+                        Background="#B22222"
+                        BorderBrush="#8B0000"
+                        Click="Back_Click"/>
+
+                <TextBlock x:Name="tbTitle"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="25,0,0,0"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <Border Grid.Row="1"
+                    BorderBrush="#333333"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="30"
+                    Background="#1A1A1A"
+                    Margin="0,0,0,30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="imgPoster"
+                           Grid.Column="0"
+                           Width="340"
+                           Height="500"
+                           Stretch="UniformToFill"
+                           Margin="0,0,25,0"/>
+
+                    <StackPanel Grid.Column="1">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock Text="Рейтинг:" 
+                                       FontSize="16" 
+                                       Foreground="#CCCCCC" 
+                                       FontWeight="Medium" 
+                                       Margin="0,0,12,0"/>
+                            <TextBlock x:Name="tbRating" 
+                                       FontSize="16" 
+                                       Foreground="#FF4444"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock Text="Жанры:" 
+                                       FontSize="16" 
+                                       Foreground="#CCCCCC" 
+                                       FontWeight="Medium" 
+                                       Margin="0,0,12,0"/>
+                            <TextBlock x:Name="tbGenres" 
+                                       FontSize="16" 
+                                       Foreground="#FF6666"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock Text="Возрастной рейтинг:" 
+                                       FontSize="16" 
+                                       Foreground="#CCCCCC" 
+                                       FontWeight="Medium" 
+                                       Margin="0,0,12,0"/>
+                            <TextBlock x:Name="tbAge" 
+                                       FontSize="16" 
+                                       Foreground="#FF6666"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock Text="В прокате с:" 
+                                       FontSize="16" 
+                                       Foreground="#CCCCCC" 
+                                       FontWeight="Medium" 
+                                       Margin="0,0,12,0"/>
+                            <TextBlock x:Name="tbRelease" 
+                                       FontSize="16" 
+                                       Foreground="White"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Описание:" 
+                                   FontSize="16" 
+                                   Foreground="#CCCCCC" 
+                                   FontWeight="Medium" 
+                                   Margin="0,0,0,8"/>
+
+                        <TextBlock x:Name="tbDescription"
+                                   FontSize="15"
+                                   Foreground="White"
+                                   TextWrapping="Wrap"
+                                   LineHeight="22"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2"
+                    BorderBrush="#333333"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="30"
+                    Background="#1A1A1A">
+                <StackPanel>
+                    <TextBlock Text="Сеансы" 
+                               FontSize="22" 
+                               FontWeight="SemiBold" 
+                               Foreground="White"
+                               Margin="0,0,0,20"/>
+
+                    <ItemsControl ItemsSource="{Binding Sessions}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#444444"
+                                        BorderThickness="1"
+                                        Margin="0,0,0,12"
+                                        Padding="18"
+                                        Background="#222222"
+                                        CornerRadius="8">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Width="340">
+                                            <TextBlock Text="{Binding StartDateTime, StringFormat=dd.MM.yyyy HH:mm}"
+                                                       FontSize="16"
+                                                       FontWeight="Medium"
+                                                       Foreground="White"/>
+                                            <TextBlock Text="{Binding HallName}" 
+                                                       FontSize="14" 
+                                                       Foreground="#AAAAAA" 
+                                                       Margin="0,6,0,0"/>
+                                        </StackPanel>
+
+                                        <TextBlock Text="{Binding Price, StringFormat={}{0:N0} ₽}"
+                                                   FontSize="18"
+                                                   FontWeight="Bold"
+                                                   Foreground="#FF4444"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,25,0"/>
+
+                                        <Button Content="Выбрать сеанс"
+                                                Padding="14,8"
+                                                FontSize="14"
+                                                Foreground="White"
+                                                Background="#B22222"
+                                                BorderBrush="#8B0000"
+                                                Click="SelectSession_Click"
+                                                Tag="{Binding Id}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock x:Name="tbNoSessions"
+                               Text="Сеансы не найдены"
+                               FontSize="16"
+                               FontStyle="Italic"
+                               Foreground="#888888"
+                               Margin="0,15,0,0"
+                               Visibility="Collapsed"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>
