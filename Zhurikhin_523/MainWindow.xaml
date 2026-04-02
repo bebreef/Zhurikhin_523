@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zhurikhin_523"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+   Title="Вариант 4" Height="450" Width="700">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Вычислить доход по вкладу" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5">
+            <TextBlock Text="Сумма" Width="180" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtSum" Width="200" Height="30"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5">
+            <TextBlock Text="Срок (месяцев)" Width="180" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtTerm" Width="200" Height="30"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,5">
+            <TextBlock Text="Процентная ставка" Width="180" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtRate" Width="200" Height="30"/>
+        </StackPanel>
+
+        <GroupBox Grid.Row="4" Header="Схема начисления %" Margin="0,15,0,10" Width="400" HorizontalAlignment="Left">
+            <StackPanel Margin="10">
+                <RadioButton x:Name="rbSimple" Content="простые проценты" IsChecked="True" GroupName="Scheme"/>
+                <RadioButton x:Name="rbCompound" Content="сложные проценты" GroupName="Scheme"/>
+            </StackPanel>
+        </GroupBox>
+
+        <Button Grid.Row="5" Content="Вычислить" Width="150" Height="40" Click="Calculate_Click" Margin="0,20,0,0" HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="6" x:Name="txtResult" FontSize="16" FontWeight="SemiBold" Margin="0,20,0,0" TextWrapping="Wrap"/>
     </Grid>
 </Window>
