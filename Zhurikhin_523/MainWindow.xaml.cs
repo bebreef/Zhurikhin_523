@@ -25,6 +25,46 @@ namespace Zhurikhin_523
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Метод расчёта дохода по вкладу (CalculateIncome)
+        /// Выполняет валидацию данных и расчёт по выбранной схеме процентов
+        /// </summary>
+        /// <param name="sum">Сумма вклада</param>
+        /// <param name="termMonths">Срок в месяцах</param>
+        /// <param name="ratePercent">Годовая процентная ставка</param>
+        /// <param name="isCompound">true = сложные проценты, false = простые проценты</param>
+        /// <returns>Доход по вкладу (округлённый до 2 знаков)</returns>
+        /// <exception cref="ArgumentException">При некорректных значениях параметров</exception>
+        public double CalculateIncome(double sum, int termMonths, double ratePercent, bool isCompound)
+        {
+            if (sum <= 0)
+                throw new ArgumentException("Сумма вклада должна быть больше нуля.");
+
+            if (termMonths <= 0)
+                throw new ArgumentException("Срок вклада должен быть больше нуля.");
+
+            if (ratePercent <= 0)
+                throw new ArgumentException("Процентная ставка должна быть больше нуля.");
+
+            double income;
+
+            if (!isCompound)
+            {
+                income = sum * (ratePercent / 100.0) * (termMonths / 12.0);
+            }
+            else
+            {
+                double monthlyRate = ratePercent / 100.0 / 12;
+                double totalAmount = sum * Math.Pow(1 + monthlyRate, termMonths);
+                income = totalAmount - sum;
+            }
+
+            return Math.Round(income, 2); 
+        }
+
+        /// <summary>
+        /// Обработчик нажатия кнопки "Вычислить"
+        /// </summary>
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -33,34 +73,26 @@ namespace Zhurikhin_523
                 int termMonths = int.Parse(txtTerm.Text);
                 double ratePercent = double.Parse(txtRate.Text.Replace(",", "."));
 
-                if (sum <= 0 || termMonths <= 0 || ratePercent <= 0)
-                {
-                    MessageBox.Show("Все значения должны быть положительными!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
+                bool isCompound = rbCompound.IsChecked == true;
 
-                double income;
-
-                if (rbSimple.IsChecked == true)
-                {
-                    income = sum * (ratePercent / 100) * (termMonths / 12.0);
-                }
-                else
-                {
-                    double monthlyRate = ratePercent / 100 / 12;
-                    double totalAmount = sum * Math.Pow(1 + monthlyRate, termMonths);
-                    income = totalAmount - sum;
-                }
+                double income = CalculateIncome(sum, termMonths, ratePercent, isCompound);
 
                 txtResult.Text = $"Доход по вкладу = {income:F2} руб.";
             }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Пожалуйста, вводите только числовые значения.\n" +
+                                "Для десятичных дробей используйте точку или запятую.",
+                                "Ошибка формата", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка ввода данных: {ex.Message}\n\nИспользуйте числа (точка или запятая для десятичных).",
-                                "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
 }
-
-
