@@ -33,3 +33,9 @@
 
 **Результат отладки:**  
 Программа теперь корректно выводит информацию о всех галактиках в требуемом формате:
+Tadpole  400,  Spiral
+Pinwheel  25,  Spiral
+Cartwheel, 500,  Lenticular
+Small Magellanic Cloud .2,  Irregular
+Andromeda  3,  Spiral
+Maffei 1,  11,  Elliptical
