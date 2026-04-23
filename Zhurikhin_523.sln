@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pr7(2)", "Pr7(2)", "{3F64EC1D-4440-47BC-85AB-083CF2843BD2}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\Downloads\3ИСИП-523 Журихин Руслан Тесты ПР 7(2).docx = ..\..\..\Downloads\3ИСИП-523 Журихин Руслан Тесты ПР 7(2).docx
+		..\..\..\Downloads\Pr7(2) autotests.png = ..\..\..\Downloads\Pr7(2) autotests.png
 		..\..\..\Downloads\PR7(2) usecase.png = ..\..\..\Downloads\PR7(2) usecase.png
 	EndProjectSection
 EndProject

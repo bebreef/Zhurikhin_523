@@ -3,6 +3,7 @@ using System;
 using System.Numerics;
 using System.Linq;
 using System.Collections.Generic;
+using Zhurikhin_523.Core;
 
 namespace UnitTestProject5
 {
