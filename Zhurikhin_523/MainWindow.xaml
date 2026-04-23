@@ -1,12 +1,43 @@
 ﻿<Window x:Class="Zhurikhin_523.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Zhurikhin_523"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Упрощённый шифр RSA" Height="520" Width="650" 
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Параметры генерации ключей" Grid.Row="0" FontWeight="Bold" Margin="0,0,0,8"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="txtP" Width="120" ToolTip="Первое простое число (например, 17)" Margin="0,0,10,0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="txtQ" Width="120" ToolTip="Второе простое число (например, 19)" VerticalContentAlignment="Center"/>
+        </StackPanel>
+
+        <TextBlock Text="Исходный текст / Зашифрованные числа" Grid.Row="2" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBox x:Name="txtInput" AcceptsReturn="True" TextWrapping="Wrap" 
+                 ToolTip="Для шифрования введите текст. Для дешифрования введите числа через пробел."
+                 Grid.Row="2" Margin="0,22,0,0" VerticalScrollBarVisibility="Auto"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+            <Button x:Name="btnGenerateKeys" Content="Сгенерировать ключи" Width="150" Margin="0,0,10,0" 
+                    Click="btnGenerateKeys_Click" ToolTip="Вычислить пару ключей (e, d, n)"/>
+            <Button x:Name="btnEncrypt" Content="Зашифровать" Width="150" Margin="0,0,10,0" 
+                    IsEnabled="False" Click="btnEncrypt_Click" ToolTip="Посимвольное шифрование открытым ключом"/>
+            <Button x:Name="btnDecrypt" Content="Дешифровать" Width="150" 
+                    IsEnabled="False" Click="btnDecrypt_Click" ToolTip="Восстановление текста закрытым ключом"/>
+        </StackPanel>
+
+        <TextBlock Text="Результат" Grid.Row="4" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBox x:Name="txtOutput" IsReadOnly="True" TextWrapping="Wrap" 
+                 Grid.Row="4" Margin="0,22,0,0" Background="#F5F5F5" 
+                 VerticalScrollBarVisibility="Auto" MinHeight="80"/>
+
+        <TextBlock x:Name="lblStatus" Grid.Row="5" FontStyle="Italic" Foreground="DimGray" Margin="0,5,0,0"/>
     </Grid>
 </Window>
