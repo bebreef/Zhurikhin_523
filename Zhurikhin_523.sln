@@ -7,13 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhurikhin_523", "Zhurikhin_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject5", "UnitTestProject5\UnitTestProject5.csproj", "{61346F55-7F0F-4B5E-B4A3-0DBF774B2E40}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pr7(2)", "Pr7(2)", "{3F64EC1D-4440-47BC-85AB-083CF2843BD2}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Downloads\3ИСИП-523 Журихин Руслан Тесты ПР 7(2).docx = ..\..\..\Downloads\3ИСИП-523 Журихин Руслан Тесты ПР 7(2).docx
-		..\..\..\Downloads\Pr7(2) autotests.png = ..\..\..\Downloads\Pr7(2) autotests.png
-		..\..\..\Downloads\PR7(2) usecase.png = ..\..\..\Downloads\PR7(2) usecase.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
